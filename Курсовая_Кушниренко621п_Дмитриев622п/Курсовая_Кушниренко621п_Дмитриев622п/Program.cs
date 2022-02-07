@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Курсовая_Кушниренко621п_Дмитриев622п
+namespace WalkingHomunculus
 {
     class MainClass
     {
