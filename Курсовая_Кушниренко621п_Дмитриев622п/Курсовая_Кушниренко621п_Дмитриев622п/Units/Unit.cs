@@ -8,7 +8,6 @@ namespace Курсовая_Кушниренко621п_Дмитриев622п
 {
     abstract class Unit
     {
-        
         enum TypeMove
         {
             Ground,
