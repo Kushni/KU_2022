@@ -8,6 +8,7 @@ namespace Курсовая_Кушниренко621п_Дмитриев622п.Inter
 {
     interface Packing
     {
-
+        public void Pack(Unit u);
+        public void UnPack(Unit u);
     }
 }
