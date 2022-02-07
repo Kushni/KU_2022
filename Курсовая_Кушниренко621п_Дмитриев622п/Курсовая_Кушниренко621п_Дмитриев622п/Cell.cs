@@ -8,6 +8,8 @@ namespace WalkingHomunculus
 {
     class Cell
     {
+        bool TypeLandscape;
+
         List<Unit> CellUnits;
 
         void AddUnit (Unit unit)

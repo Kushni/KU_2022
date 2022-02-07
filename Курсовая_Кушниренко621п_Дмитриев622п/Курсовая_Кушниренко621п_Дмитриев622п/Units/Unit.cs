@@ -8,6 +8,15 @@ namespace WalkingHomunculus
 {
     abstract class Unit
     {
+       
+        public Unit(TypeMove typemove, string name, string color, Coordinates newcoordinates, bool ispacked = false)
+        {
+            typeMove = typemove;
+            Name = name;
+            Color = color;
+            coordinates = newcoordinates;
+            IsPacked = ispacked;
+        }
 
         public enum TypeMove
         {
@@ -28,20 +37,22 @@ namespace WalkingHomunculus
 
         public int CellNumber { get; internal set; }
 
-        Coordinates coordinates { get; set; }
-        public Unit(TypeMove typemove, string name, string color)
+        int GetCellNuber (int x, int y)
         {
-            typeMove = typemove;
-            Name = name;
-            Color = color;
-            IsPacked = false;
+            return y / 100 * 10 + x / 100 + x % 100 > 0 ? 1 : 0;
         }
-        public Unit(TypeMove typemove, string name, string color, bool ispacked)
+
+        int SpeedUnit = 10;
+
+
+        Coordinates coordinates;
+
+        Coordinates coordinatesNextPoint;
+
+        void TryMove ()
         {
-            typeMove = typemove;
-            Name = name;
-            Color = color;
-            IsPacked = ispacked;
+            double LenghtX = coordinatesNextPoint.x - coordinates.x;
+            double LenghtY = coordinatesNextPoint.y - coordinates.y;
         }
     }
 }
