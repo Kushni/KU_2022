@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Курсовая_Кушниренко621п_Дмитриев622п.Interfaces
 {
-    interface Packable
+    interface Packing
     {
-        public void Pack();
-        public void UnPack();
+
     }
 }
