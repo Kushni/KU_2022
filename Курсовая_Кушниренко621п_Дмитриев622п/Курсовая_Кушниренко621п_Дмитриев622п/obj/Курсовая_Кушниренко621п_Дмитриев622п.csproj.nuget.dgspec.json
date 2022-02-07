@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "F:\\KU_2022\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п.csproj": {}
+    "C:\\Users\\prost\\OneDrive\\Документи\\GitHub\\KU_2022\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п.csproj": {}
   },
   "projects": {
-    "F:\\KU_2022\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п.csproj": {
+    "C:\\Users\\prost\\OneDrive\\Документи\\GitHub\\KU_2022\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\KU_2022\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п.csproj",
+        "projectUniqueName": "C:\\Users\\prost\\OneDrive\\Документи\\GitHub\\KU_2022\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п.csproj",
         "projectName": "Курсовая_Кушниренко621п_Дмитриев622п",
-        "projectPath": "F:\\KU_2022\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п.csproj",
-        "packagesPath": "C:\\Users\\dimab\\.nuget\\packages\\",
-        "outputPath": "F:\\KU_2022\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п\\obj\\",
+        "projectPath": "C:\\Users\\prost\\OneDrive\\Документи\\GitHub\\KU_2022\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п.csproj",
+        "packagesPath": "C:\\Users\\prost\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\prost\\OneDrive\\Документи\\GitHub\\KU_2022\\Курсовая_Кушниренко621п_Дмитриев622п\\Курсовая_Кушниренко621п_Дмитриев622п\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\dimab\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\prost\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -54,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

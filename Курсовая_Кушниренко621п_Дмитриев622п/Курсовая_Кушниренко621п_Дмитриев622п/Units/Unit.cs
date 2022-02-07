@@ -26,6 +26,8 @@ namespace Курсовая_Кушниренко621п_Дмитриев622п
 
         string Color;
 
+        public int CellNumber { get; internal set; }
+
         Coordinates coordinates { get; set; }
     }
 }
