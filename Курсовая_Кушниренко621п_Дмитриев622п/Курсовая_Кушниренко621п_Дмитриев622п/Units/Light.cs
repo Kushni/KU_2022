@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WalkingHomunculus
 {
-    class Light : Unit
+    class Light : Unit, Packable
     {
         public Light(string name) : base(name) { }
     }
