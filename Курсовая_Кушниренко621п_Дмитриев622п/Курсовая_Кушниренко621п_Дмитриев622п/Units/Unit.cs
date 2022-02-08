@@ -16,6 +16,7 @@ namespace WalkingHomunculus
             Color = color;
             coordinates = newcoordinates;
             IsPacked = ispacked;
+            id = Unit. idCounter++;
         }
 
         public enum TypeMove
@@ -26,6 +27,8 @@ namespace WalkingHomunculus
         }
 
         TypeMove typeMove;
+
+        static int idCounter=0;
 
         int id;
 

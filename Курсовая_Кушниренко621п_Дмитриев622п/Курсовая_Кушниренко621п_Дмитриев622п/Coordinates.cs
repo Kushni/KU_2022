@@ -8,7 +8,7 @@ namespace WalkingHomunculus
 {
     class Coordinates
     {
-        Coordinates (double newx, double newy)
+        internal Coordinates (double newx, double newy)
         {
             x = newx;
             y = newy;
