@@ -8,7 +8,7 @@ namespace WalkingHomunculus
 {
     class Cell
     {
-        bool TypeLandscape { get; set; }
+        public bool TypeLandscape { get; internal set; }
 
         List<Unit> CellUnits;
 
@@ -33,7 +33,7 @@ namespace WalkingHomunculus
         {
             int x = (int)(point.x);
             int y = (int)(point.y);
-            return y / 100 * 10 + x / 100 + x % 100 > 0 ? 1 : 0;
+            return y / 100 * 10 + x / 100;
         }
 
         List<Unit> GetUnits()

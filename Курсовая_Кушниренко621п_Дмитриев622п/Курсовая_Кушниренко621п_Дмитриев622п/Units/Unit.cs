@@ -18,6 +18,7 @@ namespace WalkingHomunculus
             IsPacked = ispacked;
             id = Unit.idCounter++;
             model = "Test Unit";
+            CellNumber = Cell.GetCellNumber(coordinates);
         }
 
         public enum TypeMove
