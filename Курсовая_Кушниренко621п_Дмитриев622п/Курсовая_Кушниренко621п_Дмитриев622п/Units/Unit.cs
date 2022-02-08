@@ -28,9 +28,9 @@ namespace WalkingHomunculus
 
         TypeMove typeMove;
 
-        static int idCounter=0;
+        private static int idCounter=0;
 
-        int id;
+        public int id { get; private set; }
 
         string Name;
 
