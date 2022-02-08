@@ -16,7 +16,8 @@ namespace WalkingHomunculus
             Color = color;
             coordinates = newcoordinates;
             IsPacked = ispacked;
-            id = Unit. idCounter++;
+            id = Unit.idCounter++;
+            model = "Test Unit";
         }
 
         public enum TypeMove
@@ -32,7 +33,7 @@ namespace WalkingHomunculus
 
         public int id { get; private set; }
 
-        string Name;
+        protected string Name;
 
         public bool IsPacked { get; protected set; }
 
@@ -43,6 +44,8 @@ namespace WalkingHomunculus
         //Перенес GetCellNumber в класс Cell
 
         int SpeedUnit = 10;
+
+        protected string model;
 
         public int size = 0;
 
@@ -58,6 +61,13 @@ namespace WalkingHomunculus
         {
             double LenghtX = coordinatesNextPoint.x - coordinates.x;
             double LenghtY = coordinatesNextPoint.y - coordinates.y;
+        }
+
+        public virtual string toString()
+        {
+            string s = $"{this.model}: {Name}, ID={id}, Координаты:{{{coordinates.x}; {coordinates.y}}}, Регион:{CellNumber}";
+            //if()  добавить конечную точку
+            return s;
         }
     }
 }

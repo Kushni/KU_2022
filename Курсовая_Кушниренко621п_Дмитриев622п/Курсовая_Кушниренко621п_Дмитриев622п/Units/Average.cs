@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WalkingHomunculus
 {
-    class Average : Unit
-    {
-    }
+    //class Average : Unit
+    //{
+    //
+    //}
 }

@@ -11,6 +11,7 @@ namespace WalkingHomunculus
         public Light(TypeMove typemove, string name, string color, Coordinates newcoordinates, bool ispacked = false) : base(typemove, name, color, newcoordinates, ispacked) 
         {
             size = 2;
+            model = "Test Light";
         }
         public bool GetIsPacked() { return IsPacked; }
         public int GetSize() { return size; }
@@ -21,6 +22,12 @@ namespace WalkingHomunculus
         public void UnPack()
         {
             IsPacked = false;
+        }
+        public override string toString()
+        {
+            string s = base.toString();
+            s += $", Место={internalSize}";
+            return s;
         }
     }
 }
