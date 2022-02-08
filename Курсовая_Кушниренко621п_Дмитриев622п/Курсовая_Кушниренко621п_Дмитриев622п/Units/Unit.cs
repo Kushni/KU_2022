@@ -41,6 +41,9 @@ namespace WalkingHomunculus
 
         int SpeedUnit = 10;
 
+        public int size = 0;
+
+        public int internalSize = 0;
 
         Coordinates coordinates;
 

@@ -8,7 +8,7 @@ namespace WalkingHomunculus
 {
     interface Packing
     {
-        public void Pack(Unit u);
-        public void UnPack(Unit u);
+        public void Pack(Packable u);
+        public void UnPack(Packable u);
     }
 }
