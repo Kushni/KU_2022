@@ -8,7 +8,7 @@ namespace WalkingHomunculus
 {
     class Cell
     {
-        bool TypeLandscape;
+        bool TypeLandscape { get; set; }
 
         List<Unit> CellUnits;
 
@@ -20,6 +20,20 @@ namespace WalkingHomunculus
         void RemoveUnit (Unit unit)
         {
             CellUnits.Remove(unit);
+        }
+
+        public static int GetCellNumber (double dx, double dy)
+        {
+            int x = (int)(dx);
+            int y = (int)(dy);
+            return y / 100 * 10 + x / 100 + x % 100 > 0 ? 1 : 0;
+        }
+
+        public static int GetCellNumber (Coordinates point)
+        {
+            int x = (int)(point.x);
+            int y = (int)(point.y);
+            return y / 100 * 10 + x / 100 + x % 100 > 0 ? 1 : 0;
         }
 
         List<Unit> GetUnits()

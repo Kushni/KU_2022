@@ -37,10 +37,7 @@ namespace WalkingHomunculus
 
         public int CellNumber { get; internal set; }
 
-        int GetCellNuber (int x, int y)
-        {
-            return y / 100 * 10 + x / 100 + x % 100 > 0 ? 1 : 0;
-        }
+        //Перенес GetCellNumber в класс Cell
 
         int SpeedUnit = 10;
 
@@ -48,6 +45,8 @@ namespace WalkingHomunculus
         Coordinates coordinates;
 
         Coordinates coordinatesNextPoint;
+
+        List<Coordinates> WayToPoint;
 
         void TryMove ()
         {
