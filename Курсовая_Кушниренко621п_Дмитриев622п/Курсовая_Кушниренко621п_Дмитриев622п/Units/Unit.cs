@@ -9,9 +9,8 @@ namespace WalkingHomunculus
     abstract class Unit
     {
        
-        public Unit(TypeMove typemove, string name, string color, Coordinates newcoordinates, bool ispacked = false)
+        public Unit(string name, string color, Coordinates newcoordinates, bool ispacked = false)
         {
-            typeMove = typemove;
             Name = name;
             Color = color;
             coordinates = newcoordinates;
@@ -28,7 +27,7 @@ namespace WalkingHomunculus
             Flying,
         }
 
-        TypeMove typeMove;
+        protected TypeMove typeMove;
 
         private static int idCounter=0;
 
