@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Курсовая_Кушниренко621п_Дмитриев622п/1.0.0": {
+        "runtime": {
+          "Курсовая_Кушниренко621п_Дмитриев622п.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Курсовая_Кушниренко621п_Дмитриев622п/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
