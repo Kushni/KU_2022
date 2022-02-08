@@ -8,6 +8,8 @@ namespace WalkingHomunculus
 {
     interface Packable
     {
+        public bool GetIsPacked();
+        public int GetSize();
         public void Pack();
         public void UnPack();
     }

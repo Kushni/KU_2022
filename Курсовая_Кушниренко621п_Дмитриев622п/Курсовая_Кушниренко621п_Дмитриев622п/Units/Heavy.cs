@@ -13,18 +13,20 @@ namespace WalkingHomunculus
             internalSize = 20;
         }
 
-        Packable[] carrying = new Packable[0];
+        List<Packable> carrying = new List<Packable>(0);
         public void Pack(Packable u)
         {
-            if (internalSize < ) 
+            if ((internalSize < carrying.Sum(unit => unit.GetSize())) && (!u.GetIsPacked()))
             {
                 carrying.Append(u);
-                
-            }
+                u.Pack();            }
         }
         public void UnPack(Packable u)
         {
-            
+            if (carrying.Contains(u)) 
+            {
+                carrying.RemoveAt(carrying.IndexOf(u));
+            }
         }
     }
 }

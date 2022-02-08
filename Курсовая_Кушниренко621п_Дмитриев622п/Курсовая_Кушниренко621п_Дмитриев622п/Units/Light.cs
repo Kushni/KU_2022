@@ -12,6 +12,8 @@ namespace WalkingHomunculus
         {
             size = 2;
         }
+        public bool GetIsPacked() { return IsPacked; }
+        public int GetSize() { return size; }
         public void Pack()
         {
             IsPacked = true;
