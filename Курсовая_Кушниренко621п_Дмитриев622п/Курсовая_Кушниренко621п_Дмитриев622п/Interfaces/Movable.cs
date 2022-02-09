@@ -8,8 +8,8 @@ namespace WalkingHomunculus
 {
     interface Movable
     {
-        internal void Move(List<Coordinates> WayToPoint);
+        internal void Move() { }
 
-        internal int MoveToPoint(int Speed, Coordinates NextWayPoint);
+        internal int MoveToPoint(double Speed) { return 0; }
     }
 }

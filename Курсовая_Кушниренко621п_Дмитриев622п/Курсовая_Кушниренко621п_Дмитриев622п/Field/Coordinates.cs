@@ -29,9 +29,23 @@ namespace WalkingHomunculus
             return new Coordinates(coordinates1.x - coordinates2.x, coordinates1.y - coordinates2.y);
         }
 
-        public static Coordinates operator * (Coordinates coordinates, )
+        public static Coordinates operator * (Coordinates coordinatesThisPoint, double number)
+        {
+            return new Coordinates(coordinatesThisPoint.x * number, coordinatesThisPoint.y * number);
+        }
+
+        public static Coordinates operator / (Coordinates coordinatesThisPoint, double number)
+        {
+            return new Coordinates(coordinatesThisPoint.x / number, coordinatesThisPoint.y / number);
+        }
 
         internal double x;
         internal double y;
+
+        public override string ToString()
+        {
+            string s = $"({x}, {y})";
+            return s;
+        }
     }
 }

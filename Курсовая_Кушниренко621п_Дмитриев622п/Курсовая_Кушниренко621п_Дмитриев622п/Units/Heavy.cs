@@ -12,9 +12,9 @@ namespace WalkingHomunculus
         {
             model = "Test Heavy";
         }
-        public override string toString()
+        public override string ToString()
         {
-            string s = base.toString();
+            string s = base.ToString();
             return s;
         }
     }

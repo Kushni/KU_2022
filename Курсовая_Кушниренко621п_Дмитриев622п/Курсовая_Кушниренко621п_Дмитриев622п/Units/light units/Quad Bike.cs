@@ -19,9 +19,9 @@ namespace WalkingHomunculus
         public int GetSize() { return size; }
         public void Pack() { IsPacked = true; }
         public void UnPack() { IsPacked = false; }
-        public override string toString()
+        public override string ToString()
         {
-            string s = base.toString();
+            string s = base.ToString();
             s += $", Размер = {size}";//packable
             s += $", Место={internalSize}, Свободно места = {internalSize - carrying.Sum(unit => unit.GetSize())}";//packing
             if (carrying.Count != 0)
@@ -29,7 +29,7 @@ namespace WalkingHomunculus
                 s += $"\n{Name}'s inventory:";
                 foreach (Unit unit in carrying)
                 {
-                    s += $"\n{unit.toString()}";
+                    s += $"\n{unit.ToString()}";
                 }
                 s += $"\nend of{Name}'s inventory.";
             }

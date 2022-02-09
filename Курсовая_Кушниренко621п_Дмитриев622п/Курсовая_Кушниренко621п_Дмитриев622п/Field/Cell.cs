@@ -10,7 +10,7 @@ namespace WalkingHomunculus
     {
         public bool TypeLandscape { get; internal set; }
 
-        List<Unit> CellUnits;
+        List<Unit> CellUnits = new List<Unit>();
 
         void AddUnit (Unit unit)
         {

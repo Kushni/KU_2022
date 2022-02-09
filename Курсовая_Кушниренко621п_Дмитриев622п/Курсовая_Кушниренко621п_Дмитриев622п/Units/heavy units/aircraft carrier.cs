@@ -30,16 +30,16 @@ namespace WalkingHomunculus
                 carrying.RemoveAt(carrying.IndexOf(u));
             }
         }
-        public override string toString()
+        public override string ToString()
         {
-            string s = base.toString();
+            string s = base.ToString();
             s += $", Место={internalSize}, Свободно места = {internalSize - carrying.Sum(unit => unit.GetSize())}";
             if (carrying.Count != 0)
             {
-                s += $"\n    {Name}'s inventory:";
+                s += $"\n{Name}'s inventory:";
                 foreach (Unit unit in carrying)
                 {
-                    s += $"\n       {unit.toString()}";
+                    s += $"\n{unit.ToString()}";
                 }
                 s += $"\nend of{Name}'s inventory.";
             }

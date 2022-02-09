@@ -13,11 +13,13 @@ namespace WalkingHomunculus
         {
             Name = name;
             Color = color;
-            coordinates = newcoordinates;
+            coordinatesThisPoint = newcoordinates;
+            coordinatesNextPoint = coordinatesThisPoint;
+            coordinatesEndPoint = coordinatesThisPoint;
             IsPacked = ispacked;
             id = Unit.idCounter++;
             model = "Test Unit";
-            CellNumber = Cell.GetCellNumber(coordinates);
+            CellNumber = Cell.GetCellNumber(coordinatesThisPoint);
         }
 
         public enum TypeMove
@@ -51,7 +53,7 @@ namespace WalkingHomunculus
 
         public int internalSize = 0;
 
-        Coordinates coordinates;
+        Coordinates coordinatesThisPoint;
 
         Coordinates coordinatesNextPoint;
 
@@ -59,33 +61,64 @@ namespace WalkingHomunculus
 
         List<Coordinates> WayToPoint; 
         
-        internal void Move()
+        public void NewSpeed (int newSpeed)
+        {
+            SpeedUnit = newSpeed;
+        }
+
+        internal void GetDestination (Coordinates newcoordinatesEndPoint)
+        {
+            List<Coordinates> CheckWayList;
+            FinderWay.FindWay(coordinatesThisPoint, newcoordinatesEndPoint, out CheckWayList);
+            if (CheckWayList == null)
+            {
+                Console.WriteLine($"Не удалось найти путь для {Name} из точки {coordinatesThisPoint.ToString()} в точку {newcoordinatesEndPoint.ToString()}");
+            } 
+            else
+            {
+                foreach (Coordinates i in CheckWayList)
+                {
+                    Console.WriteLine(i.ToString());
+                }
+                coordinatesEndPoint = newcoordinatesEndPoint;
+                WayToPoint = CheckWayList;
+                coordinatesNextPoint = WayToPoint[0];
+                WayToPoint.RemoveAt(0);
+            }
+        }
+
+        internal virtual void Move()
         {
             double LenghtMove = SpeedUnit;
-            while (coordinates != coordinatesEndPoint)
+            while (coordinatesThisPoint != coordinatesEndPoint && LenghtMove > 0)
             {
-                double LenghtToPoint = Coordinates.VectorLength(coordinates, coordinatesNextPoint);
-                Coordinates Difference = coordinatesNextPoint - coordinates;
-                if (LenghtToPoint < LenghtMove) LenghtMove = MoveToPoint(LenghtMove);
+                Console.WriteLine($"{coordinatesThisPoint.ToString()} + {coordinatesNextPoint.ToString()} + {coordinatesEndPoint.ToString()} Speed {LenghtMove}");
+                double LenghtToPoint = Coordinates.VectorLength(coordinatesThisPoint, coordinatesNextPoint);
+                Coordinates Difference = coordinatesNextPoint - coordinatesThisPoint;
+                if (LenghtToPoint <= LenghtMove) LenghtMove = MoveToPoint(LenghtMove);
                 else
                 {
-                    coordinates += Difference
+                    coordinatesThisPoint += Difference * LenghtMove / LenghtToPoint;
+                    LenghtMove = 0;
                 }
             }
         }
 
         internal double MoveToPoint(double Speed)
         {
-            Speed -= Coordinates.VectorLength(coordinates, coordinatesNextPoint);
-            coordinates = coordinatesNextPoint;
-            coordinatesNextPoint = WayToPoint[0];
-            WayToPoint.RemoveAt(0);
+            Speed -= Coordinates.VectorLength(coordinatesThisPoint, coordinatesNextPoint);
+            coordinatesThisPoint = coordinatesNextPoint;
+            if (WayToPoint.Count > 0)
+            {
+                coordinatesNextPoint = WayToPoint[0];
+                WayToPoint.RemoveAt(0);
+            }
             return Speed;
         }
 
-        public virtual string toString()
+        public override string ToString()
         {
-            string s = $"{this.model}: {Name}, ID={id}, Координаты:{{{coordinates.x}; {coordinates.y}}}, Регион:{CellNumber}";
+            string s = $"{this.model}: {Name}, ID={id}, Координаты:{{{coordinatesThisPoint.ToString()}}}, Регион:{CellNumber}";
             //if()  добавить конечную точку
             return s;
         }

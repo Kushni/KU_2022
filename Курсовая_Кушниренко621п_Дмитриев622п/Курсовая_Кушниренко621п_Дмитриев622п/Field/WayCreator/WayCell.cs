@@ -19,7 +19,7 @@ namespace WalkingHomunculus
 
         internal bool GetTypeLandscape()
         {
-            return CreatingMap.AllCells[ThisCellNumber].TypeLandscape;
+            return Map.AllCells[ThisCellNumber].TypeLandscape;
         }
     }
 }

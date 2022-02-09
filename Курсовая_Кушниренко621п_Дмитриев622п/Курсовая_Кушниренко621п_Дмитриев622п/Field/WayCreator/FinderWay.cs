@@ -8,24 +8,23 @@ namespace WalkingHomunculus
 {
     class FinderWay
     {
-        internal void FindWay(Coordinates StartPoint, Coordinates EndPoint, out List<Coordinates> WayToPoint)
+        internal static void FindWay(Coordinates StartPoint, Coordinates EndPoint, out List<Coordinates> WayToPoint)
         {
             WayToPoint = new List<Coordinates>();
             int StartPointNumber = Cell.GetCellNumber(StartPoint);
             int EndPointNumber = Cell.GetCellNumber(EndPoint);
 
-            if (StartPointNumber == EndPointNumber)
-            {
-                WayToPoint.Add(EndPoint);
-            }
-            else
+            WayToPoint.Add(EndPoint);
+
+            if (StartPointNumber != EndPointNumber)
             {
                 WayCell EndPointCell = FindWayBFS(StartPointNumber, EndPointNumber);
-                WayToPoint = GetWayToPoint(EndPointCell, StartPoint);
+                WayToPoint = GetWayToPoint(EndPointCell, EndPoint);
             }
+            WayToPoint.Reverse();
         }
 
-        WayCell FindWayBFS (int StartPointNumber, int EndPointNumber)
+        internal static WayCell FindWayBFS (int StartPointNumber, int EndPointNumber)
         {
             Queue<WayCell> WayInCells = new Queue<WayCell>();
             WayInCells.Enqueue(new WayCell(StartPointNumber, null));
@@ -40,19 +39,15 @@ namespace WalkingHomunculus
                 WayInCells.Dequeue();
                 if (ThisWayCell.ThisCellNumber == EndPointNumber) return ThisWayCell;
 
+                //Console.WriteLine(ThisWayCell.ThisCellNumber);
 
                 for (int i = 0; i < 4; ++i)
                 {
                     WayCell NextWayCell = new WayCell(ThisWayCell.ThisCellNumber + a[i], ThisWayCell);
+                    if (NextWayCell.ThisCellNumber <= -1 || NextWayCell.ThisCellNumber >= 100) continue;
+                    if (b[i] == 1 && ThisWayCell.ThisCellNumber / 10 - NextWayCell.ThisCellNumber / 10 != 0) continue;
+                    if (CheckedCell[NextWayCell.ThisCellNumber]) continue;
                     if (ThisWayCell.GetTypeLandscape() != NextWayCell.GetTypeLandscape()) continue;
-                    else if (b[i] == 1)
-                    {
-                        if (ThisWayCell.ThisCellNumber / 10 - NextWayCell.ThisCellNumber / 10 != 0) continue;
-                    } 
-                    else
-                    {
-                        if (NextWayCell.ThisCellNumber > -1 && NextWayCell.ThisCellNumber < 100) continue;
-                    }
                     WayInCells.Enqueue(NextWayCell);
                     CheckedCell[NextWayCell.ThisCellNumber] = true;
                 }
@@ -61,34 +56,52 @@ namespace WalkingHomunculus
             return null;
         }
 
-        List<Coordinates> GetWayToPoint (WayCell ThisWayCell, Coordinates ThisCoordinates)
+        internal static List<Coordinates> GetWayToPoint (WayCell ThisWayCell, Coordinates ThisCoordinates)
         {
 
             WayCell NextWayCell = ThisWayCell.ParentCell;
             List<Coordinates> WayToPoint = new List<Coordinates>();
-
+            WayToPoint.Add(ThisCoordinates);
+            Console.WriteLine("Bya");
+            //Environment.Exit(1);
             while (ThisWayCell.ParentCell != null)
             {
+
+               // Console.WriteLine(ThisWayCell.ThisCellNumber);
+               // Console.WriteLine(ThisCoordinates);
+
+                int x = (int)(ThisCoordinates.x);
+                int y = (int)(ThisCoordinates.y);
+
+               /** Console.WriteLine((x / 100 + 1) * 100);
+                Console.WriteLine((x / 100 - 1) * 100 + 99);
+                Console.WriteLine((y / 100 + 1) * 100);
+                Console.WriteLine((y / 100 - 1) * 100 + 99);
+               Console.WriteLine();*/
 
                 switch (ThisWayCell.ThisCellNumber - NextWayCell.ThisCellNumber)
                 {
                     case -1:
-                        WayToPoint.Add(new Coordinates((ThisCoordinates.x / 100 + 1) * 100, ThisCoordinates.y));
+                        WayToPoint.Add(new Coordinates((x / 100 + 1) * 100, y));
                         break;
                     case 1:
-                        WayToPoint.Add(new Coordinates((ThisCoordinates.x / 100 - 1) * 100 + 99, ThisCoordinates.y));
+                        WayToPoint.Add(new Coordinates((x / 100 - 1) * 100 + 99, y));
                         break;
                     case -10:
-                        WayToPoint.Add(new Coordinates(ThisCoordinates.x, (ThisCoordinates.y / 100 + 1) * 100));
+                        WayToPoint.Add(new Coordinates(x, (y / 100 + 1) * 100));
                         break;
                     case 10:
-                        WayToPoint.Add(new Coordinates(ThisCoordinates.x, (ThisCoordinates.y / 100 - 1) * 100 + 99));
+                        WayToPoint.Add(new Coordinates(x, (y / 100 - 1) * 100 + 99));
                         break;
 
                 }
 
-            }
+                ThisWayCell = NextWayCell;
+                NextWayCell = ThisWayCell.ParentCell;
+                ThisCoordinates = WayToPoint[WayToPoint.Count - 1];
 
+            }
+            //Console.WriteLine("Bya");
             return WayToPoint;
         }
     }
@@ -130,11 +143,11 @@ namespace WalkingHomunculus
             typeMove = typemove;
             Name = name;
             Color = color;
-            coordinates = newcoordinates;
+            coordinatesThisPoint = newcoordinates;
             IsPacked = ispacked;
             id = Unit.idCounter++;
             model = "Test Unit";
-            CellNumber = Cell.GetCellNumber(coordinates);
+            CellNumber = Cell.GetCellNumber(coordinatesThisPoint);
         }
 
         public enum TypeMove
@@ -168,7 +181,7 @@ namespace WalkingHomunculus
 
         public int internalSize = 0;
 
-        Coordinates coordinates;
+        Coordinates coordinatesThisPoint;
 
         Coordinates coordinatesNextPoint;
 
@@ -179,22 +192,22 @@ namespace WalkingHomunculus
         internal void Move()
         {
             double LenghtMove = SpeedUnit;
-            while (coordinates != coordinatesEndPoint)
+            while (coordinatesThisPoint != coordinatesEndPoint)
             {
-                double LenghtToPoint = Coordinates.VectorLength(coordinates, coordinatesNextPoint);
-                Coordinates Difference = coordinatesNextPoint - coordinates;
+                double LenghtToPoint = Coordinates.VectorLength(coordinatesThisPoint, coordinatesNextPoint);
+                Coordinates Difference = coordinatesNextPoint - coordinatesThisPoint;
                 if (LenghtToPoint < LenghtMove) LenghtMove = MoveToPoint(LenghtMove);
                 else
                 {
-                    coordinates += Difference
+                    coordinatesThisPoint += Difference
                 }
             }
         }
 
         internal double MoveToPoint(double Speed)
         {
-            Speed -= Coordinates.VectorLength(coordinates, coordinatesNextPoint);
-            coordinates = coordinatesNextPoint;
+            Speed -= Coordinates.VectorLength(coordinatesThisPoint, coordinatesNextPoint);
+            coordinatesThisPoint = coordinatesNextPoint;
             coordinatesNextPoint = WayToPoint[0];
             WayToPoint.RemoveAt(0);
             return Speed;
@@ -202,7 +215,7 @@ namespace WalkingHomunculus
 
         public virtual string toString()
         {
-            string s = $"{this.model}: {Name}, ID={id}, Координаты:{{{coordinates.x}; {coordinates.y}}}, Регион:{CellNumber}";
+            string s = $"{this.model}: {Name}, ID={id}, Координаты:{{{coordinatesThisPoint.x}; {coordinatesThisPoint.y}}}, Регион:{CellNumber}";
             //if()  добавить конечную точку
             return s;
         }
