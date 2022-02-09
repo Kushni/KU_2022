@@ -8,11 +8,28 @@ namespace WalkingHomunculus
 {
     class Coordinates
     {
+        public static double VectorLength (Coordinates Start, Coordinates End)
+        {
+            return Math.Pow((Start.x - End.x) * (Start.x - End.x) + (Start.y - End.y) * (Start.y - End.y), 0.5);
+        }
+
         internal Coordinates (double newx, double newy)
         {
             x = newx;
             y = newy;
         }
+
+        public static Coordinates operator + (Coordinates coordinates1, Coordinates coordinates2)
+        {
+            return new Coordinates(coordinates1.x + coordinates2.x, coordinates2.y + coordinates1.y);
+        }
+
+        public static Coordinates operator - (Coordinates coordinates1, Coordinates coordinates2)
+        {
+            return new Coordinates(coordinates1.x - coordinates2.x, coordinates1.y - coordinates2.y);
+        }
+
+        public static Coordinates operator * (Coordinates coordinates, )
 
         internal double x;
         internal double y;

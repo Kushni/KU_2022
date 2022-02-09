@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WalkingHomunculus
 {
-    abstract class Unit
+    abstract class Unit : Movable
     {
        
         public Unit(TypeMove typemove, string name, string color, Coordinates newcoordinates, bool ispacked = false)
@@ -56,12 +56,32 @@ namespace WalkingHomunculus
 
         Coordinates coordinatesNextPoint;
 
-        List<Coordinates> WayToPoint;
+        Coordinates coordinatesEndPoint;
 
-        void TryMove ()
+        List<Coordinates> WayToPoint; 
+        
+        internal void Move()
         {
-            double LenghtX = coordinatesNextPoint.x - coordinates.x;
-            double LenghtY = coordinatesNextPoint.y - coordinates.y;
+            double LenghtMove = SpeedUnit;
+            while (coordinates != coordinatesEndPoint)
+            {
+                double LenghtToPoint = Coordinates.VectorLength(coordinates, coordinatesNextPoint);
+                Coordinates Difference = coordinatesNextPoint - coordinates;
+                if (LenghtToPoint < LenghtMove) LenghtMove = MoveToPoint(LenghtMove);
+                else
+                {
+                    coordinates += Difference
+                }
+            }
+        }
+
+        internal double MoveToPoint(double Speed)
+        {
+            Speed -= Coordinates.VectorLength(coordinates, coordinatesNextPoint);
+            coordinates = coordinatesNextPoint;
+            coordinatesNextPoint = WayToPoint[0];
+            WayToPoint.RemoveAt(0);
+            return Speed;
         }
 
         public virtual string toString()
@@ -70,5 +90,6 @@ namespace WalkingHomunculus
             //if()  добавить конечную точку
             return s;
         }
+
     }
 }

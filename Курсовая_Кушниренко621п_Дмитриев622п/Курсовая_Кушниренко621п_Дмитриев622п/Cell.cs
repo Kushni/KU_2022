@@ -26,7 +26,7 @@ namespace WalkingHomunculus
         {
             int x = (int)(dx);
             int y = (int)(dy);
-            return y / 100 * 10 + x / 100 + x % 100 > 0 ? 1 : 0;
+            return y / 100 * 10 + x / 100;
         }
 
         public static int GetCellNumber (Coordinates point)
