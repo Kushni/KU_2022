@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WalkingHomunculus
 {
-    class Solider : Unit, Packable
+    class Solider : Light, Packable
     {
         public Solider(string name, string color, Coordinates newcoordinates, bool ispacked = false) : base(name, color, newcoordinates, ispacked)
         {

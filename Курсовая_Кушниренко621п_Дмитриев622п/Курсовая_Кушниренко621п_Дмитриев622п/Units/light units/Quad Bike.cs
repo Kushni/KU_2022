@@ -6,31 +6,15 @@ using System.Threading.Tasks;
 
 namespace WalkingHomunculus
 {
-    class Quad_Bike: Light, Packable, Packing
+    class Quad_Bike: Light, Packable
     {
         public Quad_Bike(string name, string color, Coordinates newcoordinates, bool ispacked = false) : base(name, color, newcoordinates, ispacked)
         {
             typeMove = TypeMove.Ground;
             size = 4;
-            internalSize = 1;
             model = "Quad_Bike";
         }
         List<Packable> carrying = new List<Packable>(0);
-        public void PackIN(Packable u)
-        {
-            if ((internalSize > carrying.Sum(unit => unit.GetSize()) + u.GetSize()) && (!u.GetIsPacked()))
-            {
-                carrying.Add(u);
-                u.Pack();
-            }
-        }
-        public void PackOUT(Packable u)
-        {
-            if (carrying.Contains(u))
-            {
-                carrying.RemoveAt(carrying.IndexOf(u));
-            }
-        }
         public bool GetIsPacked() { return IsPacked; }
         public int GetSize() { return size; }
         public void Pack() { IsPacked = true; }
