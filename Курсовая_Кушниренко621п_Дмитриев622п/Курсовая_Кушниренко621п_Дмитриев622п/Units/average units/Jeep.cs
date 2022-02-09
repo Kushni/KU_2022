@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WalkingHomunculus
 {
-    class Jeep: Light, Packable, Packing
+    class Jeep: Average, Packable, Packing
     {
         public Jeep(string name, string color, Coordinates newcoordinates, bool ispacked = false) : base(name, color, newcoordinates, ispacked)
         {
