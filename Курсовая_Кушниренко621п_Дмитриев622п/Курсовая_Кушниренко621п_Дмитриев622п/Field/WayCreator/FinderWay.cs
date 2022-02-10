@@ -14,8 +14,6 @@ namespace WalkingHomunculus
             int StartPointNumber = Cell.GetCellNumber(StartPoint);
             int EndPointNumber = Cell.GetCellNumber(EndPoint);
 
-            WayToPoint.Add(EndPoint);
-
             if (StartPointNumber != EndPointNumber)
             {
                 WayCell EndPointCell = FindWayBFS(StartPointNumber, EndPointNumber);
