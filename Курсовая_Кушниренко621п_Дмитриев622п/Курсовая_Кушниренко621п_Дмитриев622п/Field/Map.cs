@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WalkingHomunculus
 {
-    abstract class Map
+    class Map
     {
         internal static Cell[] AllCells = new Cell[105];
 

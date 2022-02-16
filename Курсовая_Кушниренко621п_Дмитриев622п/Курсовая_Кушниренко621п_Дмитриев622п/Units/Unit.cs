@@ -61,7 +61,7 @@ namespace WalkingHomunculus
 
         List<Coordinates> WayToPoint; 
         
-        public void NewSpeed (int newSpeed)
+        void NewSpeed (int newSpeed)
         {
             SpeedUnit = newSpeed;
         }
@@ -76,10 +76,6 @@ namespace WalkingHomunculus
             } 
             else
             {
-                foreach (Coordinates i in CheckWayList)
-                {
-                    Console.WriteLine(i.ToString());
-                }
                 coordinatesEndPoint = newcoordinatesEndPoint;
                 WayToPoint = CheckWayList;
                 coordinatesNextPoint = WayToPoint[0];
