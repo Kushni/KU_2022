@@ -66,7 +66,7 @@ namespace WalkingHomunculus
             SpeedUnit = newSpeed;
         }
 
-        internal void GetDestination (Coordinates newcoordinatesEndPoint)
+        internal void GetNewWay (Coordinates newcoordinatesEndPoint)
         {
             List<Coordinates> CheckWayList;
             FinderWay.FindWay(coordinatesThisPoint, newcoordinatesEndPoint, out CheckWayList);
@@ -88,7 +88,7 @@ namespace WalkingHomunculus
             double LenghtMove = SpeedUnit;
             while (coordinatesThisPoint != coordinatesEndPoint && LenghtMove > 0)
             {
-                Console.WriteLine($"{coordinatesThisPoint.ToString()} + {coordinatesNextPoint.ToString()} + {coordinatesEndPoint.ToString()} Speed {LenghtMove}");
+                //Console.WriteLine($"{coordinatesThisPoint.ToString()} + {coordinatesNextPoint.ToString()} + {coordinatesEndPoint.ToString()} Speed {LenghtMove}");
                 double LenghtToPoint = Coordinates.VectorLength(coordinatesThisPoint, coordinatesNextPoint);
                 Coordinates Difference = coordinatesNextPoint - coordinatesThisPoint;
                 if (LenghtToPoint <= LenghtMove) LenghtMove = MoveToPoint(LenghtMove);

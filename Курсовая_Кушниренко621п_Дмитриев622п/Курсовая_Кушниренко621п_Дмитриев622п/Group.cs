@@ -9,7 +9,7 @@ namespace WalkingHomunculus
     class Group
     {
 
-        internal static List<Unit> AllUnits = new List<Unit>();
+        internal List<Unit> AllUnits = new List<Unit>();
 
         internal void CreateNewUnit (Unit newUnit)
         {
@@ -21,7 +21,7 @@ namespace WalkingHomunculus
             AllUnits.Remove(unit);
         }
 
-        bool DeleteUnit (int id)
+        internal bool DeleteUnit (int id)
         {
             foreach (Unit i in AllUnits)
             {
@@ -32,6 +32,23 @@ namespace WalkingHomunculus
                 }
             }
             return false;
+        }
+
+        public void WriteAllUnits(Object obj)
+        {
+            Console.Clear();
+            foreach (Unit i in AllUnits)
+            {
+                Console.WriteLine(i.ToString());
+            }
+        }
+
+        internal void NextTickMove(Object obj)
+        {
+            foreach (Unit i in AllUnits)
+            {
+                i.Move();
+            }
         }
     }
 }
