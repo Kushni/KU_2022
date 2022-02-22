@@ -12,6 +12,7 @@ namespace WalkingHomunculus
         {
             typeMove = TypeMove.Ground;
             size = 1;
+            SpeedUnit = 5;
             model = "Solider";
         }
     }

@@ -13,6 +13,7 @@ namespace WalkingHomunculus
             typeMove = TypeMove.Ground;
             size = 8;
             internalSize = 3;
+            SpeedUnit = 20;
             model = "Jeep";
         }
     }

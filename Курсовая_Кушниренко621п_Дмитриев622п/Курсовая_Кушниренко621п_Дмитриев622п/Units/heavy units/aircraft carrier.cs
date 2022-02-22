@@ -12,6 +12,7 @@ namespace WalkingHomunculus
         {
             typeMove = TypeMove.Water;
             internalSize = 400;
+            SpeedUnit = 20;
             model = "aircraft_carrier";
         }
     }

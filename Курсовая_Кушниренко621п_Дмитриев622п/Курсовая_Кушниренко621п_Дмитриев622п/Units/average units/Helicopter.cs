@@ -13,6 +13,7 @@ namespace WalkingHomunculus
             typeMove = TypeMove.Flying;
             size = 35;
             internalSize = 6;
+            SpeedUnit = 40;
             model = "Helicopter";
         }
     }

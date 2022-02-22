@@ -12,6 +12,7 @@ namespace WalkingHomunculus
         {
             typeMove = TypeMove.Ground;
             size = 4;
+            SpeedUnit = 15;
             model = "Quad_Bike";
         }
     }

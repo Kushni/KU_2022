@@ -45,7 +45,7 @@ namespace WalkingHomunculus
 
         //Перенес GetCellNumber в класс Cell
 
-        int SpeedUnit = 10;
+        protected int SpeedUnit = 10;
 
         protected string model;
 
