@@ -68,6 +68,12 @@ namespace WalkingHomunculus
 
         internal void GetNewWay (Coordinates newcoordinatesEndPoint)
         {
+            if (typeMove == TypeMove.Flying) 
+            {
+                coordinatesEndPoint = newcoordinatesEndPoint;
+                coordinatesNextPoint = newcoordinatesEndPoint;
+                return;
+            }
             List<Coordinates> CheckWayList;
             FinderWay.FindWay(coordinatesThisPoint, newcoordinatesEndPoint, out CheckWayList);
             if (CheckWayList == null)
