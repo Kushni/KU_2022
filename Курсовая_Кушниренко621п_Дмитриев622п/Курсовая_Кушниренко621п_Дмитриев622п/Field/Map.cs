@@ -15,7 +15,19 @@ namespace WalkingHomunculus
             for (int i = 0; i < 100; ++i)
             {
                 AllCells[i] = new Cell();
-                AllCells[i].TypeLandscape = true;
+                if (i / 10 % 2 == 0) AllCells[i].TypeLandscape = true;
+                else AllCells[i].TypeLandscape = false;
+            }
+            AllCells[15].TypeLandscape = true;
+            AllCells[33].TypeLandscape = true;
+            for (int i = 0; i < 10; ++i)
+            {
+                for (int j = 0; j < 10; ++j)
+                {
+                    if (AllCells[i * 10 + j].TypeLandscape) Console.Write("#");
+                    else Console.Write("$");
+                }
+                Console.WriteLine();
             }
         }
     }

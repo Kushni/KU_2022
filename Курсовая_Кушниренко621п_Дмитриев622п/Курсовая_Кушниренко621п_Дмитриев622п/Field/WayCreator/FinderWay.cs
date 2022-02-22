@@ -17,6 +17,11 @@ namespace WalkingHomunculus
             if (StartPointNumber != EndPointNumber)
             {
                 WayCell EndPointCell = FindWayBFS(StartPointNumber, EndPointNumber);
+                if (EndPointCell == null)
+                {
+                    WayToPoint = null;
+                    return;
+                }
                 WayToPoint = GetWayToPoint(EndPointCell, EndPoint);
             }
             WayToPoint.Reverse();
@@ -35,6 +40,7 @@ namespace WalkingHomunculus
 
                 WayCell ThisWayCell = WayInCells.Peek();
                 WayInCells.Dequeue();
+                Console.WriteLine(ThisWayCell.ThisCellNumber);
                 if (ThisWayCell.ThisCellNumber == EndPointNumber) return ThisWayCell;
 
                 //Console.WriteLine(ThisWayCell.ThisCellNumber);
