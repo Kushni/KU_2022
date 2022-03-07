@@ -47,7 +47,7 @@ namespace WalkingHomunculus
 
         protected int SpeedUnit = 10;
 
-        protected string model;
+        public string model { get; protected set; }
 
         public int size = 0;
 

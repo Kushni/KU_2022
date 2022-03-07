@@ -14,11 +14,20 @@ namespace WalkingHomunculus
         internal void CreateNewUnit (Unit newUnit)
         {
             AllUnits.Add(newUnit);
+            Log.Write($"Add unit {newUnit.model} {newUnit.id}");
         }
 
         internal void DeleteUnit (Unit unit)
         {
-            AllUnits.Remove(unit);
+            try
+            {
+                AllUnits.Remove(unit);
+                Log.Write($"Delete unit {unit.model} {unit.id}");
+            }
+            catch
+            {
+                Log.Write($"Error delete unit {unit.model} {unit.id}");
+            }
         }
 
         internal bool DeleteUnit (int id)
@@ -28,9 +37,11 @@ namespace WalkingHomunculus
                 if (i.id == id)
                 {
                     AllUnits.Remove(i);
+                    Log.Write($"Delete {id} unit {i.model}");
                     return true;
                 }
             }
+            Log.Write($"Error delete unit {id}");
             return false;
         }
 
@@ -41,6 +52,7 @@ namespace WalkingHomunculus
             {
                 Console.WriteLine(i.ToString());
             }
+            Log.Write($"Show all units");
         }
 
         internal void NextTickMove(Object obj)
