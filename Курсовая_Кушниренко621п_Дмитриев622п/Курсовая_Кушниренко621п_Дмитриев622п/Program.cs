@@ -10,23 +10,65 @@ namespace WalkingHomunculus
 
         internal static Timer timer;
 
-        static Group group = new Group();
 
         static void Main(string[] args)
         {
-            Map.CreateMap(1);
-            Jeep jeep = new Jeep("Jeeps", "Green", new Coordinates(1, 1));
-            jeep.GetNewWay(new Coordinates(300, 300));
-            group.CreateNewUnit(jeep);
+            Log.Clear();
+
+            Group group = new Group();
+            RandomCommand randomCommand = new RandomCommand(group);
+
+            int typeWorldBuild;
+            Console.WriteLine("Виберіть як ви хочете створити початкову мапу:\n" +
+                "1) Власноруч\n" + "2) Випадково");
+
+            while (true)
+            {
+                try
+                {
+                    typeWorldBuild = int.Parse(Console.ReadLine());
+                    if (typeWorldBuild > 2 || typeWorldBuild < 1) continue;
+                    break;
+                }
+                catch { }
+            }
+
+            if (typeWorldBuild == 1)
+            {
+
+                Console.WriteLine("Виберіть мапу");
+                group.ChooseMap(0);
+                while (true)
+                {
+                    try
+                    {
+                        int k = int.Parse(Console.ReadLine());
+                        if (k >= 1 && k <= 6) group.ChooseMap(k);
+                        else
+                        {
+                            Console.WriteLine("Виберіть одну із новедених мап.");
+                            Log.Write("Error creating map");
+                        }
+                        break;
+                    }
+                    catch { }
+                }
+            }
+            else
+            {
+                randomCommand.CreateMap();
+                randomCommand.CreateSomeRandomUnits();
+            }
+            
             TickCommand tickCommand = group.NextTickMove;
             tickCommand += group.WriteAllUnits;
             TimerCallback tm = new TimerCallback(tickCommand);
-            //Console.WriteLine(Cell.GetCellNumber(new Coordinates(300, 300)));
+
             timer = new Timer(tm, 0, 0, 1000);
             ReadCommand readCommand = new ReadCommand();
             while (true)
             {
-                readCommand.Read();
+                readCommand.Read(group);
             }
             Console.ReadLine();
         }

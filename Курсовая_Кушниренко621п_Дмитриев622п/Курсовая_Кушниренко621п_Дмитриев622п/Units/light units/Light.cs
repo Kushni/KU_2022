@@ -14,13 +14,48 @@ namespace WalkingHomunculus
         }
         public bool GetIsPacked() { return IsPacked; }
         public int GetSize() { return size; }
-        public void Pack() { IsPacked = true; }
+        public void Pack(Coordinates coordinates) 
+        {
+            IsPacked = true;
+            coordinatesThisPoint = coordinates;
+        }
         public void UnPack() { IsPacked = false; }
         public override string ToString()
         {
             string s = base.ToString();
-            s += $", Размер = {size}";
+            s += $", Розмір = {size}";
             return s;
+        }
+
+        public bool CheckLandscape()
+        {
+            if (typeMove == TypeMove.Flying) return true;
+            else if (typeMove == TypeMove.Ground && Map.AllCells[Cell.GetCellNumber(coordinatesThisPoint)].TypeLandscape) return true;
+            else if (typeMove == TypeMove.Water && !Map.AllCells[Cell.GetCellNumber(coordinatesThisPoint)].TypeLandscape) return true;
+            else return false;
+        }
+
+        public void MoveIn(Coordinates coordinates)
+        {
+            if (coordinatesThisPoint == coordinatesEndPoint)
+            {
+                coordinatesEndPoint = coordinates;
+                coordinatesNextPoint = coordinates;
+            }
+
+            coordinatesThisPoint = coordinates;
+
+            if (CellNumber != Cell.GetCellNumber(coordinatesThisPoint))
+            {
+                Map.AllCells[CellNumber].RemoveUnit(this);
+                CellNumber = Cell.GetCellNumber(coordinatesThisPoint);
+                Map.AllCells[CellNumber].AddUnit(this);
+            }
+        }
+
+        internal override void Move()
+        {
+            if (!IsPacked) base.Move();
         }
     }
 }

@@ -12,12 +12,12 @@ namespace WalkingHomunculus
 
         List<Unit> CellUnits = new List<Unit>();
 
-        void AddUnit (Unit unit)
+        internal void AddUnit (Unit unit)
         {
             CellUnits.Add(unit);
         }
 
-        void RemoveUnit (Unit unit)
+        internal void RemoveUnit (Unit unit)
         {
             CellUnits.Remove(unit);
         }
@@ -36,7 +36,7 @@ namespace WalkingHomunculus
             return y / 100 * 10 + x / 100;
         }
 
-        List<Unit> GetUnits()
+        internal List<Unit> GetUnits()
         {
             return CellUnits;
         }

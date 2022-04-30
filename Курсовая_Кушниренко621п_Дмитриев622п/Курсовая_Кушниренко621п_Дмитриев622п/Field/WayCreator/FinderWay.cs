@@ -40,23 +40,27 @@ namespace WalkingHomunculus
 
                 WayCell ThisWayCell = WayInCells.Peek();
                 WayInCells.Dequeue();
-                Console.WriteLine(ThisWayCell.ThisCellNumber);
-                if (ThisWayCell.ThisCellNumber == EndPointNumber) return ThisWayCell;
 
-                //Console.WriteLine(ThisWayCell.ThisCellNumber);
+                if (ThisWayCell.ThisCellNumber == EndPointNumber) return ThisWayCell;
 
                 for (int i = 0; i < 4; ++i)
                 {
+
                     WayCell NextWayCell = new WayCell(ThisWayCell.ThisCellNumber + a[i], ThisWayCell);
+
                     if (NextWayCell.ThisCellNumber <= -1 || NextWayCell.ThisCellNumber >= 100) continue;
                     if (b[i] == 1 && ThisWayCell.ThisCellNumber / 10 - NextWayCell.ThisCellNumber / 10 != 0) continue;
+
                     if (CheckedCell[NextWayCell.ThisCellNumber]) continue;
                     if (ThisWayCell.GetTypeLandscape() != NextWayCell.GetTypeLandscape()) continue;
+
                     WayInCells.Enqueue(NextWayCell);
                     CheckedCell[NextWayCell.ThisCellNumber] = true;
+
                 }
                 
             }
+
             return null;
         }
 
@@ -66,22 +70,11 @@ namespace WalkingHomunculus
             WayCell NextWayCell = ThisWayCell.ParentCell;
             List<Coordinates> WayToPoint = new List<Coordinates>();
             WayToPoint.Add(ThisCoordinates);
-            Console.WriteLine("Bya");
-            //Environment.Exit(1);
             while (ThisWayCell.ParentCell != null)
             {
 
-               // Console.WriteLine(ThisWayCell.ThisCellNumber);
-               // Console.WriteLine(ThisCoordinates);
-
                 int x = (int)(ThisCoordinates.x);
                 int y = (int)(ThisCoordinates.y);
-
-               /** Console.WriteLine((x / 100 + 1) * 100);
-                Console.WriteLine((x / 100 - 1) * 100 + 99);
-                Console.WriteLine((y / 100 + 1) * 100);
-                Console.WriteLine((y / 100 - 1) * 100 + 99);
-               Console.WriteLine();*/
 
                 switch (ThisWayCell.ThisCellNumber - NextWayCell.ThisCellNumber)
                 {

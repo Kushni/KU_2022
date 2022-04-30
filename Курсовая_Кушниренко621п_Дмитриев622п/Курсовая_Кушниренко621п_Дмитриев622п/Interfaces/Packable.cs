@@ -10,8 +10,12 @@ namespace WalkingHomunculus
     {
         public bool GetIsPacked();
         public int GetSize();
-        public void Pack();
+        public void Pack(Coordinates coordinates);
         public void UnPack();
+
+        public bool CheckLandscape();
+
+        public void MoveIn(Coordinates coordinates);
     }
 }
 /*

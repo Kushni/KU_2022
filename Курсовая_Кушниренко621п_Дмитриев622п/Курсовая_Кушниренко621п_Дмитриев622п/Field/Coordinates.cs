@@ -44,7 +44,7 @@ namespace WalkingHomunculus
 
         public override string ToString()
         {
-            string s = $"({Math.Round(x, 3)}, {Math.Round(y, 3)})";
+            string s = $"({Math.Round(x, 3)}; {Math.Round(y, 3)})";
             return s;
         }
     }

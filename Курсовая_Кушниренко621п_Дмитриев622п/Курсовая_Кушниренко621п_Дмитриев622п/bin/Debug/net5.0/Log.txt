@@ -1,0 +1,4 @@
+Create Group
+Create random start
+Create random map №0
+Show all maps

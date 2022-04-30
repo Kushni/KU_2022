@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace WalkingHomunculus
 {
-    class aircraft_carrier: Heavy
+    class AirCarrier: Heavy
     {
-        public aircraft_carrier(string name, string color, Coordinates newcoordinates, bool ispacked = false) : base(name, color, newcoordinates, ispacked)
+        public AirCarrier(string name, string color, Coordinates newcoordinates, bool ispacked = false) : base(name, color, newcoordinates, ispacked)
         {
             typeMove = TypeMove.Water;
             internalSize = 400;
             SpeedUnit = 20;
-            model = "aircraft_carrier";
+            model = "AirCarrier";
         }
     }
 }

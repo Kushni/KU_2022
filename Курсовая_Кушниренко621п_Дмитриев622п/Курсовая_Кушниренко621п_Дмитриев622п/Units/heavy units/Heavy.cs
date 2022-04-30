@@ -15,31 +15,57 @@ namespace WalkingHomunculus
         List<Packable> carrying = new List<Packable>(0);
         public void PackIN(Packable u)
         {
-            if ((internalSize > carrying.Sum(unit => unit.GetSize()) + u.GetSize()) && (!u.GetIsPacked()))
+            if ((internalSize > carrying.Sum(unit => unit.GetSize()) + u.GetSize()) && (!u.GetIsPacked()) && GetThisCell() == (u as Unit).GetThisCell())
             {
                 carrying.Add(u);
-                u.Pack();
+                u.Pack(coordinatesThisPoint);
+            }
+            else
+            {
+                Console.WriteLine($"Не вдалося упакувати {(u as Unit).id} у юніт {id}");
+                Log.Write("Error command: pack");
             }
         }
         public void PackOUT(Packable u)
         {
-            if (carrying.Contains(u))
+            if (carrying.Contains(u) && u.CheckLandscape())
             {
                 carrying.RemoveAt(carrying.IndexOf(u));
+                u.UnPack();
+            }
+            else
+            {
+                Console.WriteLine($"Не вдалося видалити юніт");
+                Log.Write("Error command: unpack");
             }
         }
+
+        protected void Transportation()
+        {
+            foreach (Packable i in carrying)
+            {
+                i.MoveIn(coordinatesThisPoint);
+            }
+        }
+
+        internal override void Move()
+        {
+            base.Move();
+            Transportation();
+        }
+
         public override string ToString()
         {
             string s = base.ToString();
-            s += $", Место={internalSize}, Свободно места = {internalSize - carrying.Sum(unit => unit.GetSize())}";
+            s += $", Місткість={internalSize}, Свободний простір = {internalSize - carrying.Sum(unit => unit.GetSize())}";
             if (carrying.Count != 0)
             {
                 s += $"\n{Name}'s inventory:";
                 foreach (Unit unit in carrying)
                 {
-                    s += $"\n{unit.ToString()}";
+                    s += $"\n\t{unit.ToString()}";
                 }
-                s += $"\nend of{Name}'s inventory.";
+                s += $"\nend of {Name}'s inventory.";
             }
             return s;
         }

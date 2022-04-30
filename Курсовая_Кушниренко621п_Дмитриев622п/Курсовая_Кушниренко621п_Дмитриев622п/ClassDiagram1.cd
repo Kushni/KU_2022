@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WalkingHomunculus.Unit" Collapsed="true">
+    <Position X="10.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAyAAIAEICAAAAEAIAAAEQQAgAAAAAAAgAAoAAYAgA=</HashCode>
+      <FileName>Units\Unit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WalkingHomunculus.Heavy" Collapsed="true">
+    <Position X="10.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAIAAAAAEAAAAEAAAAAAAAACAAAAAAAAAAAQ=</HashCode>
+      <FileName>Units\heavy units\Heavy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WalkingHomunculus.Average" Collapsed="true">
+    <Position X="12.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAIAAAASEAAAAEAAgCAAAAACAAAAAAAAAABY=</HashCode>
+      <FileName>Units\average units\Average.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WalkingHomunculus.Light" Collapsed="true">
+    <Position X="8.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAASEAAAAAAAgCAAAAAAAAAAAAAAAABI=</HashCode>
+      <FileName>Units\light units\Light.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

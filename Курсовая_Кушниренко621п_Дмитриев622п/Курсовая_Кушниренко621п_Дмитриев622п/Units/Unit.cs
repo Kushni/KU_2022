@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WalkingHomunculus
 {
-    abstract class Unit : Movable
+    abstract class Unit
     {
        
         public Unit(string name, string color, Coordinates newcoordinates, bool ispacked = false)
@@ -20,6 +20,7 @@ namespace WalkingHomunculus
             id = Unit.idCounter++;
             model = "Test Unit";
             CellNumber = Cell.GetCellNumber(coordinatesThisPoint);
+            Map.AllCells[CellNumber].AddUnit(this);
         }
 
         public enum TypeMove
@@ -31,17 +32,17 @@ namespace WalkingHomunculus
 
         protected TypeMove typeMove;
 
-        private static int idCounter=0;
+        protected static int idCounter=0;
 
         public int id { get; private set; }
 
         protected string Name;
 
-        public bool IsPacked { get; protected set; }
+        protected bool IsPacked;
 
-        string Color;
+        protected string Color;
 
-        public int CellNumber { get; internal set; }
+        public int CellNumber { get; protected set; }
 
         //Перенес GetCellNumber в класс Cell
 
@@ -53,17 +54,27 @@ namespace WalkingHomunculus
 
         public int internalSize = 0;
 
-        Coordinates coordinatesThisPoint;
+        protected Coordinates coordinatesThisPoint;
 
-        Coordinates coordinatesNextPoint;
+        protected Coordinates coordinatesNextPoint;
 
-        Coordinates coordinatesEndPoint;
+        protected Coordinates coordinatesEndPoint;
 
-        List<Coordinates> WayToPoint; 
-        
-        void NewSpeed (int newSpeed)
+        protected List<Coordinates> WayToPoint = new List<Coordinates>();
+
+        protected void NewSpeed (int newSpeed)
         {
             SpeedUnit = newSpeed;
+        }
+
+        internal int GetThisCell()
+        {
+            return Cell.GetCellNumber(coordinatesThisPoint);
+        }
+
+        internal Coordinates GetThisCoordinates()
+        {
+            return coordinatesThisPoint;
         }
 
         internal void GetNewWay (Coordinates newcoordinatesEndPoint)
@@ -79,13 +90,19 @@ namespace WalkingHomunculus
             if (CheckWayList == null)
             {
                 Console.WriteLine($"Не удалось найти путь для {Name} из точки {coordinatesThisPoint.ToString()} в точку {newcoordinatesEndPoint.ToString()}");
+                Log.Write("Error find way");
             } 
-            else
+            else if (CheckWayList.Count > 0)
             {
                 coordinatesEndPoint = newcoordinatesEndPoint;
                 WayToPoint = CheckWayList;
                 coordinatesNextPoint = WayToPoint[0];
                 WayToPoint.RemoveAt(0);
+            }
+            else
+            {
+                coordinatesEndPoint = newcoordinatesEndPoint;
+                coordinatesNextPoint = newcoordinatesEndPoint;
             }
         }
 
@@ -94,19 +111,27 @@ namespace WalkingHomunculus
             double LenghtMove = SpeedUnit;
             while (coordinatesThisPoint != coordinatesEndPoint && LenghtMove > 0)
             {
-                //Console.WriteLine($"{coordinatesThisPoint.ToString()} + {coordinatesNextPoint.ToString()} + {coordinatesEndPoint.ToString()} Speed {LenghtMove}");
+                
                 double LenghtToPoint = Coordinates.VectorLength(coordinatesThisPoint, coordinatesNextPoint);
                 Coordinates Difference = coordinatesNextPoint - coordinatesThisPoint;
+
                 if (LenghtToPoint <= LenghtMove) LenghtMove = MoveToPoint(LenghtMove);
                 else
                 {
                     coordinatesThisPoint += Difference * LenghtMove / LenghtToPoint;
                     LenghtMove = 0;
                 }
+
+                if (CellNumber != Cell.GetCellNumber(coordinatesThisPoint))
+                {
+                    Map.AllCells[CellNumber].RemoveUnit(this);
+                    CellNumber = Cell.GetCellNumber(coordinatesThisPoint);
+                    Map.AllCells[CellNumber].AddUnit(this);
+                }
             }
         }
 
-        internal double MoveToPoint(double Speed)
+        protected double MoveToPoint(double Speed)
         {
             Speed -= Coordinates.VectorLength(coordinatesThisPoint, coordinatesNextPoint);
             coordinatesThisPoint = coordinatesNextPoint;
@@ -120,7 +145,7 @@ namespace WalkingHomunculus
 
         public override string ToString()
         {
-            string s = $"{this.model}: {Name}, ID={id}, Координаты:{{{coordinatesThisPoint.ToString()}}}, Регион:{CellNumber}";
+            string s = $"{this.model}: {Name}, ID={id}, Координати:{{{coordinatesThisPoint.ToString()}}}, Область:{CellNumber}";
             //if()  добавить конечную точку
             return s;
         }
