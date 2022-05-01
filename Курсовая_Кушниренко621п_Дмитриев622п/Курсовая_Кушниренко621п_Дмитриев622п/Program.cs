@@ -48,6 +48,7 @@ namespace WalkingHomunculus
                         {
                             Console.WriteLine("Виберіть одну із новедених мап.");
                             Log.Write("Error creating map");
+                            throw new Exception();
                         }
                         break;
                     }

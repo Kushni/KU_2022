@@ -126,7 +126,7 @@ namespace WalkingHomunculus
                             TryCommand(commandWords, group.SpawnNewUnit);
                             break;
                         case "куди":
-                            if (commandWords[1] == "йде" && commandWords[2] == "російський" && commandWords[3] == "корабель?")
+                            if (commandWords[1] == "йде" && commandWords[2] == "рос?йський" && commandWords[3] == "корабель?")
                             {
                                 Console.WriteLine("Нахуй!");
                                 Log.Write("Привітання до російського корабля");

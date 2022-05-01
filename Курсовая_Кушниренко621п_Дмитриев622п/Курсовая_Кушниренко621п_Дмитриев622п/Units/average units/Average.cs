@@ -20,11 +20,12 @@ namespace WalkingHomunculus
             {
                 carrying.Add(u);
                 u.Pack(coordinatesThisPoint);
+                Log.Write($"Command: PackIN {(u as Unit).id}, {id}");
             }
             else
             {
                 Console.WriteLine($"Не вдалося упакувати {(u as Unit).id} у юніт {id}");
-                Log.Write("Error command: pack");
+                Log.Write($"Error command: PackIN {(u as Unit).id}, {id}");
             }
         }
         public void PackOUT(Packable u)
@@ -33,11 +34,13 @@ namespace WalkingHomunculus
             {
                 carrying.RemoveAt(carrying.IndexOf(u));
                 u.UnPack();
+
+                Log.Write($"Error command: PackIN {(u as Unit).id}, {id}");
             }
             else
             {
-                Console.WriteLine($"Не вдалося видалити юніт");
-                Log.Write("Error command: unpack");
+                Console.WriteLine($"Не вдалося розпакувати {(u as Unit).id} з юніту {id}");
+                Log.Write($"Error command: PackOUT {(u as Unit).id}, {id}");
             }
         }
         public bool GetIsPacked() { return IsPacked; }
