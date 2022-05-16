@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="WalkingHomunculus.Program">
-    <Position X="13.75" Y="0.75" Width="1.5" />
+    <Position X="13.25" Y="4.75" Width="1.5" />
     <NestedTypes>
       <Delegate Name="WalkingHomunculus.Program.TickCommand" Collapsed="true">
         <TypeIdentifier>
@@ -15,7 +15,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="WalkingHomunculus.Unit">
-    <Position X="7.25" Y="0.75" Width="1.5" />
+    <Position X="15" Y="0.75" Width="1.5" />
     <NestedTypes>
       <Enum Name="WalkingHomunculus.Unit.TypeMove" Collapsed="true">
         <TypeIdentifier>
@@ -24,29 +24,28 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AIAyAAIAEICAAAAEAIAAAEQQAgAAAAAAAgAAoAAYAgA=</HashCode>
+      <HashCode>AIAyAAIAEICAAAAEAIAAAESQAgAAAAAAAgEAoAAYAgA=</HashCode>
       <FileName>Units\Unit.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.663" />
   </Class>
-  <Class Name="WalkingHomunculus.Average" Collapsed="true">
-    <Position X="5" Y="7.5" Width="1.5" />
+  <Class Name="WalkingHomunculus.Average">
+    <Position X="7.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAIAAAASEAAAAEAAgCAAAAACAAAAAAAAAABY=</HashCode>
       <FileName>Units\average units\Average.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Left" Position="0.1" />
   </Class>
-  <Class Name="WalkingHomunculus.Heavy" Collapsed="true">
-    <Position X="7.25" Y="7.5" Width="1.5" />
+  <Class Name="WalkingHomunculus.Heavy">
+    <Position X="14" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAIAAAAAEAAAAEAAAAAAAAACAAAAAAAAAAAQ=</HashCode>
       <FileName>Units\heavy units\Heavy.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Left" Position="0.18" />
   </Class>
-  <Class Name="WalkingHomunculus.Light" Collapsed="true">
-    <Position X="9.5" Y="7.5" Width="1.5" />
+  <Class Name="WalkingHomunculus.Light">
+    <Position X="21.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAASEAAAAAAAgCAAAAAAAAAAAAAAAABI=</HashCode>
       <FileName>Units\light units\Light.cs</FileName>
@@ -54,11 +53,180 @@
     <Lollipop Orientation="Left" Position="0.194" />
   </Class>
   <Class Name="WalkingHomunculus.Group">
-    <Position X="12" Y="0.75" Width="1.5" />
+    <Position X="11.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgACgAAAACAMAAEAAABAAAGIAAAIAAAAEYAAAgAAjQA=</HashCode>
       <FileName>Group.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="WalkingHomunculus.Log">
+    <Position X="16.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAA=</HashCode>
+      <FileName>Log.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.NameDealer">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>NameDealer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.RandomCommand">
+    <Position X="9.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAABAAAAAAAAAAAQAAAAAAAAAAAAgQAAAAAEAA=</HashCode>
+      <FileName>RandomStart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.ReadCommand">
+    <Position X="13.25" Y="0.75" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="WalkingHomunculus.ReadCommand.OneNumberCommand" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ReadCommand.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="WalkingHomunculus.ReadCommand.TwoNumberCommand" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ReadCommand.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="WalkingHomunculus.ReadCommand.ThreeNumberCommand" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ReadCommand.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="WalkingHomunculus.ReadCommand.SpawnCommand" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ReadCommand.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACQAAAAAEAAAgAAAIAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ReadCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.Bike" Collapsed="true">
+    <Position X="20.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\light units\Bike.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.Boat" Collapsed="true">
+    <Position X="23" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\light units\Boat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.Scout" Collapsed="true">
+    <Position X="25.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\light units\Scout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.Soldier" Collapsed="true">
+    <Position X="18.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\light units\Soldier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.AirCarrier">
+    <Position X="11.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\heavy units\AirCarrier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.Airtruck">
+    <Position X="14" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\heavy units\Airtruck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.Truck">
+    <Position X="16.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\heavy units\Truck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.Helicopter">
+    <Position X="9.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\average units\Helicopter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.Jeep">
+    <Position X="5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\average units\Jeep.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.Ship">
+    <Position X="7.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\average units\Ship.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.FinderWay">
+    <Position X="18.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAACAAEAAA=</HashCode>
+      <FileName>Field\WayCreator\FinderWay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.WayCell">
+    <Position X="20.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Field\WayCreator\WayCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.Cell">
+    <Position X="18.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAACCAAQAAAAAAAAAAAAIAAAE=</HashCode>
+      <FileName>Field\Cell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.Coordinates">
+    <Position X="20.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAEYAUAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Field\Coordinates.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingHomunculus.Map">
+    <Position X="18.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Field\Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="WalkingHomunculus.Movable">
+    <Position X="16.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Movable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WalkingHomunculus.Packable">
+    <Position X="16.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAASAAAAAAAAgCAAAAAAAAAAAAAAAABI=</HashCode>
+      <FileName>Interfaces\Packable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

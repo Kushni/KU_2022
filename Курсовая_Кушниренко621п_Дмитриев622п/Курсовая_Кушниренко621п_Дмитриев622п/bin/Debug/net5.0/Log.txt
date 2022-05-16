@@ -1,35 +1,16 @@
 Create Group
 Create random start
-Create random map №2
-Create map №2
-Error command: SpawnNewUnit bike (338,054; 340,402)
-Error command: SpawnNewUnit aircarrier (689,329; 537,585)
-Error command: SpawnNewUnit boat (720,134; 323,724)
-Error command: SpawnNewUnit boat (284,253; 517,875)
-Command: CreateNewUnit 0 (50,298; 368,22) Airtruck
-Command: CreateNewUnit 1 (51,357; 655,067) Scout
-Command: CreateNewUnit 2 (752,781; 209,289) Jeep
-Command: CreateNewUnit 3 (931,442; 172,284) Airtruck
-Error command: SpawnNewUnit ship (627,781; 60,409)
+Create random map №6
+Create map №6
+Command: CreateNewUnit 0 (846,448; 697,322) Boat
+Command: CreateNewUnit 1 (850,93; 477,29) Boat
+Error command: SpawnNewUnit truck (337,557; 713,758)
+Command: CreateNewUnit 2 (474,744; 605,868) Helicopter
+Error command: SpawnNewUnit soldier (914,425; 744,31)
 Create random units
 Use command seemap
 Command: Seemap
 Use command goto
-Command: GetNewWay 0, (701, 201)
+Command: GetNewWay 0, (50, 50)
 Use command continue
-Use command help
-Command: Help
-Use command pack
-Command: PackUnit 0, 2
-Use command seemap
-Command: Seemap
-Use command goto
-Command: GetNewWay 0, (201, 601)
 Use command continue
-Use command seemap
-Command: Seemap
-Use command position
-Command: ShowUnitPosition 0
-Use command unpack
-Error command: unpack
-Command: UnPackUnit 0, 2

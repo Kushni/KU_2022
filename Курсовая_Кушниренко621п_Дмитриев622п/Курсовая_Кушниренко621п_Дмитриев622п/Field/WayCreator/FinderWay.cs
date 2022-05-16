@@ -8,7 +8,7 @@ namespace WalkingHomunculus
 {
     class FinderWay
     {
-        internal static void FindWay(Coordinates StartPoint, Coordinates EndPoint, out List<Coordinates> WayToPoint)
+        internal void FindWay(Coordinates StartPoint, Coordinates EndPoint, out List<Coordinates> WayToPoint)
         {
             WayToPoint = new List<Coordinates>();
             int StartPointNumber = Cell.GetCellNumber(StartPoint);
@@ -27,7 +27,7 @@ namespace WalkingHomunculus
             WayToPoint.Reverse();
         }
 
-        internal static WayCell FindWayBFS (int StartPointNumber, int EndPointNumber)
+        internal WayCell FindWayBFS (int StartPointNumber, int EndPointNumber)
         {
             Queue<WayCell> WayInCells = new Queue<WayCell>();
             WayInCells.Enqueue(new WayCell(StartPointNumber, null));
@@ -64,7 +64,7 @@ namespace WalkingHomunculus
             return null;
         }
 
-        internal static List<Coordinates> GetWayToPoint (WayCell ThisWayCell, Coordinates ThisCoordinates)
+        internal List<Coordinates> GetWayToPoint (WayCell ThisWayCell, Coordinates ThisCoordinates)
         {
 
             WayCell NextWayCell = ThisWayCell.ParentCell;

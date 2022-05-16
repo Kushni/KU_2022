@@ -11,22 +11,22 @@ namespace WalkingHomunculus
 
         public List<Unit> AllUnits { get; private set; }
 
-        internal static string[] AllModels = new string[] {"soldier", "scout", "boat", "bike", "truck", "airtruck", "aircarrier", "ship", "jeep", "helicopter"};
+        internal static string[] AllModels = new string[] { "soldier", "scout", "boat", "bike", "truck", "airtruck", "aircarrier", "ship", "jeep", "helicopter" };
 
-        public Group ()
+        public Group()
         {
             AllUnits = new List<Unit>();
             Log.Write("Create Group");
         }
 
-        internal void CreateNewUnit (Unit newUnit)
+        internal void CreateNewUnit(Unit newUnit)
         {
             AllUnits.Add(newUnit);
 
             Log.Write($"Command: CreateNewUnit {newUnit.id} {newUnit.GetThisCoordinates()} {newUnit.model}");
         }
 
-        Unit FindUnit (int id)
+        Unit FindUnit(int id)
         {
             foreach (Unit i in AllUnits)
             {
@@ -35,7 +35,7 @@ namespace WalkingHomunculus
             return null;
         }
 
-        internal void DeleteUnit (Unit unit)
+        internal void DeleteUnit(Unit unit)
         {
             try
             {
@@ -44,16 +44,19 @@ namespace WalkingHomunculus
             }
             catch
             {
+
+                Console.WriteLine("Такого юніту немає на мапі");
                 Log.Write($"Error command: DeleteUnit {unit.model} {unit.GetThisCoordinates()} {unit.id}");
             }
         }
 
-        internal void DeleteUnit (int id)
+        internal void DeleteUnit(int id)
         {
             Unit unit = FindUnit(id);
 
             if (unit == null)
             {
+                Console.WriteLine("Такого юніту немає на мапі");
                 Log.Write($"Error command: DeleteUnit {id}");
             }
             else
@@ -61,7 +64,7 @@ namespace WalkingHomunculus
                 AllUnits.Remove(unit);
                 Log.Write($"Command: DeleteUnit {id}");
             }
-            
+
         }
 
         public void WriteAllUnits()
@@ -86,7 +89,7 @@ namespace WalkingHomunculus
                 if (i is Packable)
                 {
                     if ((i as Packable).GetIsPacked()) continue;
-                } 
+                }
                 Console.WriteLine(i.ToString());
             }
         }
@@ -102,7 +105,7 @@ namespace WalkingHomunculus
         internal void Help()
         {
             Console.WriteLine("Усі наявні команди:\n" + "help - вивід інформації щодо наявних команд\n" + "continue - продовження роботи програми\n" +
-                "models - показати усі варіанти моделей юнітів\n" + "seemap - виведення мапи у консоль\n" + "infoall - виведення детальної інформації про усіх юнітів\n" 
+                "models - показати усі варіанти моделей юнітів\n" + "seemap - виведення мапи у консоль\n" + "infoall - виведення детальної інформації про усіх юнітів\n"
                 + "position id - показати на мапі клітинку, де знаходиться юніт\n" +
                 "infounit id - виведення детальної інформації про юніт за номером id\n" + "infocell id - виведення інформації про клітинку з номером id\n" +
                 "delete id - видалення юніту id\n" + "infocell x y - виведення інформації про клітинку за координатами x y\n" +
@@ -141,7 +144,7 @@ namespace WalkingHomunculus
             Log.Write("Command: ModelsInfo");
         }
 
-        internal void InfoUnit (int id)
+        internal void InfoUnit(int id)
         {
             Unit unit = FindUnit(id);
 
@@ -157,7 +160,7 @@ namespace WalkingHomunculus
             }
         }
 
-        internal void InfoCell (int id)
+        internal void InfoCell(int id)
         {
             if (id < 0 || id >= 100)
             {
@@ -212,7 +215,7 @@ namespace WalkingHomunculus
                 Log.Write($"Error command: ShowUnitPosition {id}");
                 return;
             }
-            
+
             for (int i = 0; i < 100; ++i)
             {
                 if (i % 10 == 0) Console.WriteLine();
@@ -225,7 +228,7 @@ namespace WalkingHomunculus
             Log.Write($"Command: ShowUnitPosition {id}");
         }
 
-        internal void PackUnit (int idHeavy, int idLight)
+        internal void PackUnit(int idHeavy, int idLight)
         {
             Unit heavyUnit = FindUnit(idHeavy);
             Unit lightUnit = FindUnit(idLight);
@@ -237,13 +240,13 @@ namespace WalkingHomunculus
             }
             else
             {
-                (heavyUnit as Packing).PackIN(lightUnit as Packable);
-
                 Log.Write($"Command: PackUnit {idHeavy}, {idLight}");
+
+                (heavyUnit as Packing).PackIN(lightUnit as Packable);
             }
         }
 
-        internal void UnPackUnit (int idHeavy, int idLight)
+        internal void UnPackUnit(int idHeavy, int idLight)
         {
             Unit heavyUnit = FindUnit(idHeavy);
             Unit lightUnit = FindUnit(idLight);
@@ -261,7 +264,7 @@ namespace WalkingHomunculus
             }
         }
 
-        internal void GetNewWay (int id, int x, int y)
+        internal void GetNewWay(int id, int x, int y)
         {
             Unit unit = FindUnit(id);
             Coordinates coordinates = new Coordinates(x, y);
@@ -273,9 +276,9 @@ namespace WalkingHomunculus
             }
             else
             {
-                unit.GetNewWay(coordinates);
-
                 Log.Write($"Command: GetNewWay {id}, ({x}, {y})");
+
+                unit.GetNewWay(coordinates);
             }
         }
 
@@ -306,7 +309,7 @@ namespace WalkingHomunculus
             }
         }
 
-        internal void SpawnNewUnit (string model, int x, int y)
+        internal void SpawnNewUnit(string model, int x, int y)
         {
             Coordinates coordinates = new Coordinates(x, y);
             SpawnNewUnit(model, coordinates);

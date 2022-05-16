@@ -62,6 +62,8 @@ namespace WalkingHomunculus
 
         protected List<Coordinates> WayToPoint = new List<Coordinates>();
 
+        FinderWay finderWay = new FinderWay();
+
         protected void NewSpeed (int newSpeed)
         {
             SpeedUnit = newSpeed;
@@ -86,7 +88,7 @@ namespace WalkingHomunculus
                 return;
             }
             List<Coordinates> CheckWayList;
-            FinderWay.FindWay(coordinatesThisPoint, newcoordinatesEndPoint, out CheckWayList);
+            finderWay.FindWay(coordinatesThisPoint, newcoordinatesEndPoint, out CheckWayList);
             if (CheckWayList == null)
             {
                 Console.WriteLine($"Не удалось найти путь для {Name} из точки {coordinatesThisPoint.ToString()} в точку {newcoordinatesEndPoint.ToString()}");
